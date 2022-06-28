@@ -4,7 +4,7 @@
             <div class="team-name-text">{{team.name}}</div>
         </div>
 
-        <img :src="logoUrl" alt="team logo" class="team-logo"/>
+        <!-- <img :src="logoUrl" alt="team logo" class="team-logo"/> -->
 
         <div class="cards">
             <Card class="card" color="red" :num-cards="team.redCards"/>
@@ -60,7 +60,7 @@
     }
 
     .bot-substitution-intent {
-        background-color: #c2c3d0;
+            background-color: #c2c3d0;
     }
 
     .team-name {
