@@ -10,9 +10,9 @@
             <TeamStatus class="team-status" color="blue" :team="refereeMessage.blue"/>
         </div>
 
-        <hr class="upper-lower-separator">
+        <!-- <hr class="upper-lower-separator">
 
-        <GameEvents class="lower-container"/>
+        <GameEvents class="lower-container"/> -->
     </div>
 </template>
 
