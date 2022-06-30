@@ -2,20 +2,20 @@ import {Referee} from "./sslProto"
 import sslProto from "./sslProto"
 
 const stageToText = new Map();
-stageToText.set(Referee.Stage.NORMAL_FIRST_HALF_PRE, 'Match to be started');
-stageToText.set(Referee.Stage.NORMAL_FIRST_HALF, '1st Half');
-stageToText.set(Referee.Stage.NORMAL_HALF_TIME, 'Half Time');
-stageToText.set(Referee.Stage.NORMAL_SECOND_HALF_PRE, '2nd Half');
-stageToText.set(Referee.Stage.NORMAL_SECOND_HALF, '2nd Half');
-stageToText.set(Referee.Stage.EXTRA_TIME_BREAK, 'Game goes into Overtime');
-stageToText.set(Referee.Stage.EXTRA_FIRST_HALF_PRE, '1st Half (Overtime)');
-stageToText.set(Referee.Stage.EXTRA_FIRST_HALF, '1st Half (Overtime)');
-stageToText.set(Referee.Stage.EXTRA_HALF_TIME, 'Half Time (Overtime)');
-stageToText.set(Referee.Stage.EXTRA_SECOND_HALF_PRE, '2nd Half (Overtime)');
-stageToText.set(Referee.Stage.EXTRA_SECOND_HALF, '2nd Half (Overtime)');
-stageToText.set(Referee.Stage.PENALTY_SHOOTOUT_BREAK, 'Prepare for Penalty Shootout');
-stageToText.set(Referee.Stage.PENALTY_SHOOTOUT, 'Penalty Shootout');
-stageToText.set(Referee.Stage.POST_GAME, 'Match finished');
+stageToText.set(Referee.Stage.NORMAL_FIRST_HALF_PRE, '1st');
+stageToText.set(Referee.Stage.NORMAL_FIRST_HALF, '1st');
+stageToText.set(Referee.Stage.NORMAL_HALF_TIME, 'HT');
+stageToText.set(Referee.Stage.NORMAL_SECOND_HALF_PRE, '2nd');
+stageToText.set(Referee.Stage.NORMAL_SECOND_HALF, '2nd');
+stageToText.set(Referee.Stage.EXTRA_TIME_BREAK, 'OT');
+stageToText.set(Referee.Stage.EXTRA_FIRST_HALF_PRE, 'OT - 1st');
+stageToText.set(Referee.Stage.EXTRA_FIRST_HALF, 'OT - 1st');
+stageToText.set(Referee.Stage.EXTRA_HALF_TIME, 'OT - HT');
+stageToText.set(Referee.Stage.EXTRA_SECOND_HALF_PRE, 'OT - 2nd');
+stageToText.set(Referee.Stage.EXTRA_SECOND_HALF, 'OT - 2nd');
+stageToText.set(Referee.Stage.PENALTY_SHOOTOUT_BREAK, 'OT - END');
+stageToText.set(Referee.Stage.PENALTY_SHOOTOUT, 'Shootout');
+stageToText.set(Referee.Stage.POST_GAME, 'End');
 
 export const mapStageToText = function (stage) {
     const text = stageToText.get(stage);
@@ -27,18 +27,18 @@ export const mapStageToText = function (stage) {
 
 
 const commandToText = new Map();
-commandToText.set(Referee.Command.HALT, 'Game is Halted');
-commandToText.set(Referee.Command.STOP, 'Game is Stopped');
-commandToText.set(Referee.Command.NORMAL_START, 'Game is Running');
-commandToText.set(Referee.Command.FORCE_START, 'Game is Running');
+commandToText.set(Referee.Command.HALT, 'Halt');
+commandToText.set(Referee.Command.STOP, 'Stop');
+commandToText.set(Referee.Command.NORMAL_START, 'Running');
+commandToText.set(Referee.Command.FORCE_START, 'Running');
 commandToText.set(Referee.Command.PREPARE_KICKOFF_YELLOW, 'Kickoff');
 commandToText.set(Referee.Command.PREPARE_KICKOFF_BLUE, 'Kickoff');
 commandToText.set(Referee.Command.PREPARE_PENALTY_YELLOW, 'Penalty Kick');
 commandToText.set(Referee.Command.PREPARE_PENALTY_BLUE, 'Penalty Kick');
-commandToText.set(Referee.Command.DIRECT_FREE_YELLOW, 'Game is Running');
-commandToText.set(Referee.Command.DIRECT_FREE_BLUE, 'Game is Running');
-commandToText.set(Referee.Command.INDIRECT_FREE_YELLOW, 'Game is Running');
-commandToText.set(Referee.Command.INDIRECT_FREE_BLUE, 'Game is Running');
+commandToText.set(Referee.Command.DIRECT_FREE_YELLOW, 'Running');
+commandToText.set(Referee.Command.DIRECT_FREE_BLUE, 'Running');
+commandToText.set(Referee.Command.INDIRECT_FREE_YELLOW, 'Running');
+commandToText.set(Referee.Command.INDIRECT_FREE_BLUE, 'Running');
 commandToText.set(Referee.Command.TIMEOUT_YELLOW, 'Timeout');
 commandToText.set(Referee.Command.TIMEOUT_BLUE, 'Timeout');
 commandToText.set(Referee.Command.GOAL_YELLOW, 'Goal');

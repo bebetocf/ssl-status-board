@@ -19,11 +19,10 @@
 <script>
     import TeamStatus from "./TeamStatus";
     import MatchStatus from "./MatchStatus";
-    import GameEvents from "./GameEvents";
 
     export default {
         name: "StatusBoard",
-        components: {GameEvents, MatchStatus, TeamStatus},
+        components: {MatchStatus, TeamStatus},
         computed: {
             refereeMessage() {
                 return this.$store.state.refereeMsg;
@@ -34,6 +33,7 @@
 
 <style scoped>
     .status-board {
+        padding-top: 0.3em;
         text-align: center;
         font-size: 3.5vw;
     }

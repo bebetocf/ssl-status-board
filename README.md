@@ -38,11 +38,12 @@ You need to install following dependencies first:
 ### Prepare
 Download and install to [GOPATH](https://github.com/golang/go/wiki/GOPATH):
 ```bash
-go get -u github.com/RoboCup-SSL/ssl-status-board/...
+go get -u github.com/bebetocf/ssl-status-board/...
 ```
 Switch to project root directory
 ```bash
-cd $GOPATH/src/github.com/RoboCup-SSL/ssl-status-board/
+go mod init github.com/bebetocf/ssl-status-board/
+cd $GOPATH/src/github.com/bebetocf/ssl-status-board/
 ```
 Download dependencies for frontend
 ```bash

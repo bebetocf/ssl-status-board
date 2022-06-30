@@ -1,32 +1,40 @@
 <template>
     <div class="match-status">
-        <div>
-            <div :class="{'highlight-command': true, 'stop-command': isStop, 'halt-command': isHalt, 'robot-substitution': isRobotSubstitution}">
+        <div class="time-box">
             <div class="stage">{{stage}}</div>
 
-            <span class="score">
-                {{refereeMessage.yellow.score}} : {{refereeMessage.blue.score}}
-            </span>
-
-            <div class="command" :class="{'team-yellow': commandForYellow, 'team-blue': commandForBlue}">
-                {{gameState}}
-                <span v-if="isBallPlacement && remainingTime >= 0">
-                    (<span v-format-us-duration="remainingTime"></span>)
-                </span>
-                <span v-if="isTimeout">
-                    (<span v-format-us-duration="timeoutTime"></span>)
-                </span>
+            <div class="time-container" v-format-us-duration="refereeMessage.stageTimeLeft"
+                :class="{'time-positive': refereeMessage.stageTimeLeft >= 0, 'time-negative': refereeMessage.stageTimeLeft < 0}">
             </div>
-            </div>
-
-            <hr class="separator"/>
-
-            <PowerPlay/>
-
         </div>
-        <div class="time-container"
-             v-format-us-duration="refereeMessage.stageTimeLeft"
-             :class="{'time-positive': refereeMessage.stageTimeLeft >= 0, 'time-negative': refereeMessage.stageTimeLeft < 0}">
+        <div class="score-box">
+            <div
+                :class="{'highlight-command': true, 'stop-command': isStop, 'halt-command': isHalt, 'robot-substitution': isRobotSubstitution}">
+
+                <div class="score">
+                    {{refereeMessage.yellow.score}} : {{refereeMessage.blue.score}}
+                </div>
+            </div>
+
+            <!-- <hr class="separator"/> -->
+
+            <div class="command-box">
+                <div :class="{'team-yellow': commandForYellow, 'team-blue': commandForBlue}" class="team-color"></div>
+                
+                <div class="command">
+                    {{gameState}}
+                    <span v-if="isBallPlacement && remainingTime >= 0">
+                        (<span v-format-us-duration="remainingTime"></span>)
+                    </span>
+                    <span v-if="isTimeout">
+                        (<span v-format-us-duration="timeoutTime"></span>)
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- <PowerPlay/> -->
+
         </div>
     </div>
 </template>
@@ -34,11 +42,9 @@
 <script>
     import {Referee, GameEvent} from "@/sslProto"
     import {mapStageToText, mapCommandToText} from "@/texts";
-    import PowerPlay from "./PowerPlay";
 
     export default {
         name: "MatchStatus",
-        components: {PowerPlay},
         computed: {
             refereeMessage() {
                 return this.$store.state.refereeMsg;
@@ -123,64 +129,83 @@
     .match-status {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         height: 100%;
         align-items: center;
     }
 
+    .time-box {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+    }
+
     .time-container {
-        border-style: dashed;
-        display: inline-block;
+        color: white;
+        width: fit-content;
+        flex-basis: 50%;
         padding: 0.1em;
         margin: 0.1em;
     }
 
     .time-positive {
-        border-color: green;
-        background-color: rgba(0, 255, 0, 0.1);
-
+        background-color: transparent;
     }
 
     .time-negative {
-        border-color: red;
-        background-color: rgba(255, 0, 0, 0.1);
+        background-color: transparent;
     }
 
     .separator {
         margin: 0.2em;
     }
 
-    .score {
-        white-space: nowrap;
+    .score-box {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        font-size: 3em;
+    }
+
+    .score {
+        width: 100%;
+        flex-basis: 100%;
+        white-space: nowrap;
+        font-size: 2em;
+        color: white;
     }
 
     .stage {
-        margin-top: 1vh;
+        width: fit-content;
+        flex-basis: 50%;
+        padding: 0.1em;
+        margin: 0.1em;
+    }
+
+    .command-box {
+        justify-content: center;
+        display: flex;
+    }
+
+    .team-color {
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+        display: inline-block;
+        margin-right: 5px;
+        border-radius: 100%;
     }
 
     .command {
-        margin-top: 3vmin;
+        width: fit-content;
+        justify-content: center;
+        font-size: 1.1em;
     }
 
     .highlight-command {
-        transition: background-color 500ms ease;
+        display: flex;
+        align-items: stretch;
         border-radius: .5em;
         padding: 0.2em 0.1em 0.1em;
         margin-top: 0.1em;
-    }
-
-    .highlight-command.stop-command {
-        background-color: #FF7000
-    }
-
-    .highlight-command.halt-command {
-        background-color: #EE0022;
-    }
-
-    .highlight-command.robot-substitution {
-        background-color: #0053ee;
     }
 
 </style>
